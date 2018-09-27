@@ -34,6 +34,7 @@ public class VN_GUI
 		//Creates Menu SubItems
 		JMenuItem fileNew = new JMenuItem("New"); 
 		JMenuItem fileSave = new JMenuItem("Save");
+		JMenuItem fileExport = new JMenuItem("Export");
 		
 		JMenuItem editUndo = new JMenuItem("Undo");
 		JMenuItem editRedo = new JMenuItem("Redo");
@@ -57,7 +58,8 @@ public class VN_GUI
 		help.setMnemonic(KeyEvent.VK_H); //Alt-H
 		
 		fileNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())); //Ctrl N
-		fileSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())); // Ctrl S
+		fileSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())); //Ctrl S
+		fileExport.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())); //Ctrl E
 		
 		editUndo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())); //Ctrl Z
 		editRedo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())); //Ctrl Y
