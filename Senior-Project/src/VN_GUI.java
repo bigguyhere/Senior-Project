@@ -79,6 +79,7 @@ public class VN_GUI
 		//Adds SubItems to Menu
 		file.add(fileNew);
 		file.add(fileSave);
+		file.add(fileExport);
 		
 		edit.add(editUndo);
 		edit.add(editRedo);
