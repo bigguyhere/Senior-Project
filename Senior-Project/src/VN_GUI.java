@@ -34,6 +34,7 @@ public class VN_GUI
 		//Creates Menu SubItems
 		JMenuItem fileNew = new JMenuItem("New"); 
 		JMenuItem fileSave = new JMenuItem("Save");
+		JMenuItem fileSaveAs = new JMenuItem("Save As");
 		JMenuItem fileExport = new JMenuItem("Export");
 		
 		JMenuItem editUndo = new JMenuItem("Undo");
@@ -79,6 +80,7 @@ public class VN_GUI
 		//Adds SubItems to Menu
 		file.add(fileNew);
 		file.add(fileSave);
+		file.add(fileSaveAs);
 		file.add(fileExport);
 		
 		edit.add(editUndo);
