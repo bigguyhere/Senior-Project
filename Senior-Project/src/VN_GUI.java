@@ -8,6 +8,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
+import javax.swing.BoxLayout;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+import java.awt.Color;
+import javax.swing.JList;
 
 public class VN_GUI 
 {
@@ -22,6 +27,12 @@ public class VN_GUI
 		JFrame mainWindow = new JFrame("Visual Novel Engine");
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		//Creates JPanels
+		JPanel assetWindow = new JPanel();
+		JPanel sideBar = new JPanel();
+		JPanel interactionWindow = new JPanel();
+		BoxLayout boxLayout = new BoxLayout(sideBar,BoxLayout.Y_AXIS);
+				
 		//Creates Menu Bar
 		JMenuBar menuBar = new JMenuBar(); 
 
@@ -79,15 +90,19 @@ public class VN_GUI
 		
 		//Adds SubItems to Menu
 		file.add(fileNew);
+		file.addSeparator();
 		file.add(fileSave);
 		file.add(fileSaveAs);
+		file.addSeparator();
 		file.add(fileExport);
 		
 		edit.add(editUndo);
 		edit.add(editRedo);
+		edit.addSeparator();
 		edit.add(editCut);
 		edit.add(editCopy);
 		edit.add(editPaste);
+		edit.addSeparator();
 		edit.add(editFind);
 		
 		importData.add(imprtImage);
@@ -104,12 +119,38 @@ public class VN_GUI
 		menuBar.add(importData);
 		menuBar.add(help);
 		
-		/*
-		JPanel panel = new JPanel();
-		JLabel lbl = new JLabel("Test");
-		panel.add(lbl);
-		mainWindow.add(panel);
-		*/
+		
+		sideBar.setLayout(boxLayout);
+		
+		JLabel contentExplorer = new JLabel("Content Explorer");
+		JLabel devWindow = new JLabel("Development Window");
+		JLabel interaction = new JLabel("Interaction Window");
+		
+		sideBar.setBorder(BorderFactory.createLineBorder(Color.black));
+		assetWindow.setBorder(BorderFactory.createLineBorder(Color.black));
+		interactionWindow.setBorder(BorderFactory.createLineBorder(Color.black));
+		//contentExplorer.setBorder(BorderFactory.createLineBorder(Color.black));
+		
+		contentExplorer.setAlignmentX(JLabel.LEFT_ALIGNMENT);
+		devWindow.setAlignmentX(JLabel.LEFT_ALIGNMENT);
+		interaction.setAlignmentX(JLabel.LEFT_ALIGNMENT);
+		
+		sideBar.add(contentExplorer);
+		assetWindow.add(devWindow);
+		interactionWindow.add(interaction);
+		
+		sideBar.setSize(200,1080);
+		assetWindow.setSize(1720, 540);
+		interactionWindow.setSize(1720, 540);
+		
+		sideBar.setAlignmentX(JFrame.LEFT_ALIGNMENT);
+		assetWindow.setAlignmentX(JFrame.RIGHT_ALIGNMENT);
+		assetWindow.setAlignmentY(JFrame.TOP_ALIGNMENT);
+		interactionWindow.setAlignmentX(JFrame.RIGHT_ALIGNMENT);
+		interactionWindow.setAlignmentY(JFrame.BOTTOM_ALIGNMENT);
+		
+		mainWindow.add(sideBar);
+		mainWindow.add(assetWindow);	
 		
 		//Creates the main window
 		mainWindow.setJMenuBar(menuBar);
