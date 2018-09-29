@@ -4,10 +4,10 @@ import java.awt.Toolkit;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
-import java.awt.Color;
-
-public class VN_GUI 
+public class VN_GUI
 {
+
+		
 	public static void main(String[] args)
 	{
 		start();
@@ -19,13 +19,15 @@ public class VN_GUI
 		JFrame mainWindow = new JFrame("Visual Novel Engine");
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//Creates JPanels
+		//Creates Major and Minor JPanels
 		JPanel assetWindow = new JPanel();
 		JPanel sideBar = new JPanel();
 		JPanel interactionWindow = new JPanel();
 		JPanel windows = new JPanel();
-		BoxLayout boxLayout = new BoxLayout(sideBar,BoxLayout.Y_AXIS);
-		BoxLayout boxLayout2 = new BoxLayout(windows,BoxLayout.Y_AXIS);
+		
+		//Instantiates Box Layouts for both Major Panels
+		BoxLayout boxLayout = new BoxLayout(sideBar,  BoxLayout.Y_AXIS);
+		BoxLayout boxLayout2 = new BoxLayout(windows, BoxLayout.Y_AXIS);
 				
 		//Creates Menu Bar
 		JMenuBar menuBar = new JMenuBar(); 
@@ -38,6 +40,7 @@ public class VN_GUI
 		
 		//Creates Menu SubItems
 		JMenuItem fileNew = new JMenuItem("New"); 
+		JMenuItem fileOpen = new JMenuItem("Open");
 		JMenuItem fileSave = new JMenuItem("Save");
 		JMenuItem fileSaveAs = new JMenuItem("Save As");
 		JMenuItem fileExport = new JMenuItem("Export");
@@ -84,6 +87,7 @@ public class VN_GUI
 		
 		//Adds SubItems to Menu
 		file.add(fileNew);
+		file.add(fileOpen);
 		file.addSeparator();
 		file.add(fileSave);
 		file.add(fileSaveAs);
@@ -113,12 +117,16 @@ public class VN_GUI
 		menuBar.add(importData);
 		menuBar.add(help);
 		
-		
+		//Sets the Layout for Major JPanels
 		sideBar.setLayout(boxLayout);
+		windows.setLayout(boxLayout2);
 		
+		//Creates Descriptor JLabels for each Visible JPanel
 		JLabel contentExplorer = new JLabel("Content Explorer");
 		JLabel devWindow = new JLabel("Development Window");
 		JLabel interaction = new JLabel("Interaction Window");
+		
+		//Creates Bevel Borders for each Visible JPanel
 		sideBar.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		assetWindow.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		interactionWindow.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
@@ -128,31 +136,36 @@ public class VN_GUI
 		//devWindow.setAlignmentX(JLabel.LEFT_ALIGNMENT);
 		//interaction.setAlignmentX(JLabel.LEFT_ALIGNMENT);
 		
+		//Adds Descriptor JLabels for each Visible JPanel
 		sideBar.add(contentExplorer);
 		assetWindow.add(devWindow);
 		interactionWindow.add(interaction);
 		
-		sideBar.setSize(200,1080);
-		assetWindow.setSize(1720, 540);
-		interactionWindow.setSize(1720, 540);
+		//Sets the size for all JPanels
+		sideBar.setSize(250,1080);
+		windows.setSize(1670, 1080);
+		assetWindow.setSize(1670, 600);
+		interactionWindow.setSize(1620, 480);
 		
 		//sideBar.setAlignmentX(JFrame.LEFT_ALIGNMENT);
 		//windows.setAlignmentX(JFrame.RIGHT_ALIGNMENT);
 		//assetWindow.setAlignmentY(JFrame.TOP_ALIGNMENT);
 		//interactionWindow.setAlignmentY(JFrame.BOTTOM_ALIGNMENT);
 		
+		//Sets up the ActionListener for each MenuItem
+		fileSaveAs.addActionListener(new MenuOperations(mainWindow, '-'));
 		
-		windows.setLayout(boxLayout2);
+		//Adds the Minor JPanels to the Major JPanels
 		windows.add(assetWindow);
 		windows.add(interactionWindow);
 		
+		//Adds the Major JPanels to the JFrame
 		mainWindow.add(sideBar);
 		mainWindow.add(windows);
 		
-		//Creates the main window
+		//Sets up the main window
 		mainWindow.setJMenuBar(menuBar);
 		mainWindow.setSize(1920, 1080);
-		
 		mainWindow.setVisible(true);
 	}
 	
