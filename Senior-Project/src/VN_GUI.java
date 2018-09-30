@@ -153,7 +153,26 @@ public class VN_GUI
 		//interactionWindow.setAlignmentY(JFrame.BOTTOM_ALIGNMENT);
 		
 		//Sets up the ActionListener for each MenuItem
+		fileOpen.addActionListener(new MenuOperations(mainWindow, 'N'));	
+		fileOpen.addActionListener(new MenuOperations(mainWindow, 'O'));	
+		fileSave.addActionListener(new MenuOperations(mainWindow, 'S'));
 		fileSaveAs.addActionListener(new MenuOperations(mainWindow, '-'));
+		fileExport.addActionListener(new MenuOperations(mainWindow, 'E'));
+		
+		editUndo.addActionListener(new MenuOperations(mainWindow, 'Z'));
+		editRedo.addActionListener(new MenuOperations(mainWindow, 'Y'));
+		editCut.addActionListener(new MenuOperations(mainWindow, 'X'));
+		editCopy.addActionListener(new MenuOperations(mainWindow, 'C'));
+		editPaste.addActionListener(new MenuOperations(mainWindow, 'V'));
+		editFind.addActionListener(new MenuOperations(mainWindow, 'F'));
+		
+		imprtImage.addActionListener(new MenuOperations(mainWindow, 'I'));
+		imprtAudio.addActionListener(new MenuOperations(mainWindow, 'A'));
+		imprtVideo.addActionListener(new MenuOperations(mainWindow, 'D'));
+		
+		helpFAQ.addActionListener(new MenuOperations(mainWindow, 'Q'));
+		helpForum.addActionListener(new MenuOperations(mainWindow, 'R'));
+		helpAbout.addActionListener(new MenuOperations(mainWindow, 'B'));
 		
 		//Adds the Minor JPanels to the Major JPanels
 		windows.add(assetWindow);

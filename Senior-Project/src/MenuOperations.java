@@ -19,9 +19,14 @@ public class MenuOperations implements ActionListener
 		
 	}
 	
+	//Problem where open method opens both OpenDialog and SaveDialog
 	public void open()
 	{
-		
+		JFileChooser open = new JFileChooser();
+		if(open.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION)
+		{
+			File file = open.getSelectedFile();
+		}
 	}
 	
 	public void save()
@@ -35,15 +40,20 @@ public class MenuOperations implements ActionListener
 		if(save.showSaveDialog(frame) == JFileChooser.APPROVE_OPTION)
 		{
 			File file = save.getSelectedFile();
-			file.setExecutable(true);
-			file.setReadable(true);
 		}
 	}
 	
 	public void actionPerformed(ActionEvent e)
 	{
-		if(flag == '-')
+		switch (flag)
+		{
+		case 'O':
+			open();
+		case 'S':
+			save();
+		case '-':
 			saveAs();
+		}
 	}
 	
 	public void export()
