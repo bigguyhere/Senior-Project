@@ -19,7 +19,7 @@ public class MenuOperations implements ActionListener
 		
 	}
 	
-	//Problem where open method opens both OpenDialog and SaveDialog
+	//Problem where all methods execute because actionPerformed is tripped for all buttons upon an action, may need to make a class for each MenuItem
 	public void open()
 	{
 		JFileChooser open = new JFileChooser();
