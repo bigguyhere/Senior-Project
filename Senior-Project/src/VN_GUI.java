@@ -1,6 +1,6 @@
 // Authors: Liam Kastell & Sean Beckerle
 import java.awt.event.KeyEvent;
-import java.awt.Toolkit;
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
@@ -19,6 +19,7 @@ public class VN_GUI
 		JFrame mainWindow = new JFrame("Visual Novel Engine");
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		//Creates Major and Minor JPanels
 		JPanel assetWindow = new JPanel();
 		JPanel sideBar = new JPanel();
@@ -26,8 +27,11 @@ public class VN_GUI
 		JPanel windows = new JPanel();
 		
 		//Instantiates Box Layouts for both Major Panels
-		BoxLayout boxLayout = new BoxLayout(sideBar,  BoxLayout.Y_AXIS);
-		BoxLayout boxLayout2 = new BoxLayout(windows, BoxLayout.Y_AXIS);
+		mainWindow.setLayout(new GridBagLayout());
+		GridBagConstraints constraints = new GridBagConstraints();
+		
+		//BoxLayout boxLayout = new BoxLayout(sideBar,  BoxLayout.Y_AXIS);
+		//BoxLayout boxLayout2 = new BoxLayout(windows, BoxLayout.Y_AXIS);
 				
 		//Creates Menu Bar
 		JMenuBar menuBar = new JMenuBar(); 
@@ -118,8 +122,8 @@ public class VN_GUI
 		menuBar.add(help);
 		
 		//Sets the Layout for Major JPanels
-		sideBar.setLayout(boxLayout);
-		windows.setLayout(boxLayout2);
+		//sideBar.setLayout(boxLayout);
+		//windows.setLayout(boxLayout2);
 		
 		//Creates Descriptor JLabels for each Visible JPanel
 		JLabel contentExplorer = new JLabel("Content Explorer");
@@ -175,12 +179,34 @@ public class VN_GUI
 		helpAbout.addActionListener(new MenuOperations(mainWindow, 'B'));
 		
 		//Adds the Minor JPanels to the Major JPanels
-		windows.add(assetWindow);
-		windows.add(interactionWindow);
+		//windows.add(assetWindow);
+		//windows.add(interactionWindow);
 		
 		//Adds the Major JPanels to the JFrame
-		mainWindow.add(sideBar);
-		mainWindow.add(windows);
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.weightx = 0.33;
+		//constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+		constraints.weighty = 0.5;
+		//constraints.ipady = 1000;
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		constraints.gridheight = 2;
+		
+		mainWindow.add(sideBar, constraints);
+		//constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.gridx = 2;
+		constraints.gridy = 0;
+		constraints.gridwidth = 2;
+		
+		mainWindow.add(assetWindow, constraints);
+		//constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.gridx = 2;
+		constraints.gridy = 1;
+		constraints.gridwidth = 2;
+		
+		mainWindow.add(interactionWindow, constraints);
+		
+		//mainWindow.add(windows);
 		
 		//Sets up the main window
 		mainWindow.setJMenuBar(menuBar);
