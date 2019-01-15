@@ -1,6 +1,7 @@
 // Authors: Liam Kastell & Sean Beckerle
 import java.awt.event.KeyEvent;
 import java.awt.Toolkit;
+import java.awt.Color;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
@@ -18,16 +19,21 @@ public class VN_GUI
 		//Sets up JFrame
 		JFrame mainWindow = new JFrame("Visual Novel Engine");
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainWindow.setLayout(new GridBagLayout());
 		
-		//Creates Major and Minor JPanels
-		JPanel assetWindow = new JPanel();
+		//Creates Major JPanels
 		JPanel sideBar = new JPanel();
-		JPanel interactionWindow = new JPanel();
 		JPanel windows = new JPanel();
+		
+		//Creates Minor JPanels
+		JPanel assetWindow = new JPanel();
+		JPanel interactionWindow = new JPanel();
 		
 		//Instantiates Box Layouts for both Major Panels
 		BoxLayout boxLayout = new BoxLayout(sideBar,  BoxLayout.Y_AXIS);
 		BoxLayout boxLayout2 = new BoxLayout(windows, BoxLayout.Y_AXIS);
+		//BoxLayout boxLayout3 = new BoxLayout(assetWindow, BoxLayout.Y_AXIS);
+		//BoxLayout boxLayout4 = new BoxLayout(interactionWindow, BoxLayout.Y_AXIS);
 				
 		//Creates Menu Bar
 		JMenuBar menuBar = new JMenuBar(); 
@@ -120,9 +126,11 @@ public class VN_GUI
 		//Sets the Layout for Major JPanels
 		sideBar.setLayout(boxLayout);
 		windows.setLayout(boxLayout2);
+		//assetWindow.setLayout(boxLayout2);
+		//interactionWindow.setLayout(boxLayout2);
 		
 		//Creates Descriptor JLabels for each Visible JPanel
-		JLabel contentExplorer = new JLabel("Content Explorer");
+		JLabel contentExplorer = new JLabel("Content Explorer                                                 ");
 		JLabel devWindow = new JLabel("Development Window");
 		JLabel interaction = new JLabel("Interaction Window");
 		
@@ -130,10 +138,13 @@ public class VN_GUI
 		sideBar.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		assetWindow.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		interactionWindow.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-		//contentExplorer.setBorder(BorderFactory.createLineBorder(Color.black));
+		contentExplorer.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+		devWindow.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+		interaction.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		
 		//contentExplorer.setAlignmentX(JLabel.LEFT_ALIGNMENT);
 		//devWindow.setAlignmentX(JLabel.LEFT_ALIGNMENT);
+		//devWindow.setAlignmentY(JLabel.TOP_ALIGNMENT);
 		//interaction.setAlignmentX(JLabel.LEFT_ALIGNMENT);
 		
 		//Adds Descriptor JLabels for each Visible JPanel
