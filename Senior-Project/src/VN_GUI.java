@@ -1,6 +1,6 @@
 // Authors: Liam Kastell & Sean Beckerle
 import java.awt.event.KeyEvent;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.Color;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -25,13 +25,17 @@ public class VN_GUI
 		JPanel sideBar = new JPanel();
 		JPanel windows = new JPanel();
 		
+		
 		//Creates Minor JPanels
 		JPanel assetWindow = new JPanel();
 		JPanel interactionWindow = new JPanel();
 		
 		//Instantiates Box Layouts for both Major Panels
-		BoxLayout boxLayout = new BoxLayout(sideBar,  BoxLayout.Y_AXIS);
-		BoxLayout boxLayout2 = new BoxLayout(windows, BoxLayout.Y_AXIS);
+		mainWindow.setLayout(new GridBagLayout());
+		GridBagConstraints constraints = new GridBagConstraints();
+		
+		//BoxLayout boxLayout = new BoxLayout(sideBar,  BoxLayout.Y_AXIS);
+		//BoxLayout boxLayout2 = new BoxLayout(windows, BoxLayout.Y_AXIS);
 		//BoxLayout boxLayout3 = new BoxLayout(assetWindow, BoxLayout.Y_AXIS);
 		//BoxLayout boxLayout4 = new BoxLayout(interactionWindow, BoxLayout.Y_AXIS);
 				
@@ -124,8 +128,8 @@ public class VN_GUI
 		menuBar.add(help);
 		
 		//Sets the Layout for Major JPanels
-		sideBar.setLayout(boxLayout);
-		windows.setLayout(boxLayout2);
+		//sideBar.setLayout(boxLayout);
+		//windows.setLayout(boxLayout2);
 		//assetWindow.setLayout(boxLayout2);
 		//interactionWindow.setLayout(boxLayout2);
 		
@@ -153,10 +157,10 @@ public class VN_GUI
 		interactionWindow.add(interaction);
 		
 		//Sets the size for all JPanels
-		sideBar.setSize(250,1080);
-		windows.setSize(1670, 1080);
-		assetWindow.setSize(1670, 600);
-		interactionWindow.setSize(1620, 480);
+		//sideBar.setSize(250,1080);
+		//windows.setSize(1670, 1080);
+		//assetWindow.setSize(1670, 600);
+		//interactionWindow.setSize(1620, 480);
 		
 		//sideBar.setAlignmentX(JFrame.LEFT_ALIGNMENT);
 		//windows.setAlignmentX(JFrame.RIGHT_ALIGNMENT);
@@ -186,12 +190,35 @@ public class VN_GUI
 		helpAbout.addActionListener(new MenuOperations(mainWindow, 'B'));
 		
 		//Adds the Minor JPanels to the Major JPanels
-		windows.add(assetWindow);
-		windows.add(interactionWindow);
+		//windows.add(assetWindow);
+		//windows.add(interactionWindow);
 		
 		//Adds the Major JPanels to the JFrame
-		mainWindow.add(sideBar);
-		mainWindow.add(windows);
+		constraints.weightx = 0.5;
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+		//constraints.weighty = 0.5;
+		constraints.ipady = 1000;
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		constraints.gridheight = 2;
+		
+		mainWindow.add(sideBar, constraints);
+		//constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.gridx = 2;
+		constraints.gridy = 0;
+		constraints.gridheight = 1;
+		constraints.gridwidth = 2;
+		
+		mainWindow.add(assetWindow, constraints);
+		//constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.gridx = 2;
+		constraints.gridy = 1;
+		constraints.gridwidth = 2;
+		
+		mainWindow.add(interactionWindow, constraints);
+		
+		//mainWindow.add(windows);
 		
 		//Sets up the main window
 		mainWindow.setJMenuBar(menuBar);
