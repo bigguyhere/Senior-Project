@@ -21,13 +21,12 @@ public class VN_GUI
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainWindow.setLayout(new GridBagLayout());
 		
-		//Creates Major JPanels
+
+		
+		//Creates Major and Minor JPanels
+		JPanel assetWindow = new JPanel();
 		JPanel sideBar = new JPanel();
 		JPanel windows = new JPanel();
-		
-		
-		//Creates Minor JPanels
-		JPanel assetWindow = new JPanel();
 		JPanel interactionWindow = new JPanel();
 		
 		//Instantiates Box Layouts for both Major Panels
@@ -208,6 +207,19 @@ public class VN_GUI
 		constraints.gridx = 2;
 		constraints.gridy = 0;
 		constraints.gridheight = 1;
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.weightx = 0.33;
+		//constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+		constraints.weighty = 0.5;
+		//constraints.ipady = 1000;
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		constraints.gridheight = 2;
+		
+		mainWindow.add(sideBar, constraints);
+		//constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.gridx = 2;
+		constraints.gridy = 0;
 		constraints.gridwidth = 2;
 		
 		mainWindow.add(assetWindow, constraints);
