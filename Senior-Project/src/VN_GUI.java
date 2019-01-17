@@ -21,8 +21,6 @@ public class VN_GUI
 		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainWindow.setLayout(new GridBagLayout());
 		
-
-		
 		//Creates Major and Minor JPanels
 		JPanel assetWindow = new JPanel();
 		JPanel sideBar = new JPanel();
