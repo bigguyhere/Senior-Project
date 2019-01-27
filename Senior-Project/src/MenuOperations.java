@@ -19,7 +19,6 @@ public class MenuOperations implements ActionListener
 		
 	}
 	
-	//Problem where all methods execute because actionPerformed is tripped for all buttons upon an action, may need to make a class for each MenuItem
 	public void open()
 	{
 		JFileChooser open = new JFileChooser();
@@ -49,10 +48,13 @@ public class MenuOperations implements ActionListener
 		{
 		case 'O':
 			open();
+			break;
 		case 'S':
 			save();
+			break;
 		case '-':
 			saveAs();
+			break;
 		}
 	}
 	
