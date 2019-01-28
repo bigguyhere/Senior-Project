@@ -7,17 +7,35 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class MainMenuScreen implements Screen
 {
+	final VisualNovelEngine game;
+	
+	OrthographicCamera camera;
+	
+	public MainMenuScreen(final VisualNovelEngine g)
+	{
+		this.game = g;
 
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, 800, 480);
+	}
+	
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void render(float delta) {
-		// TODO Auto-generated method stub
 		
+		Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+		camera.update();
+		game.batch.setProjectionMatrix(camera.combined);
+		
+		game.batch.begin();
+		game.font.draw(game.batch, "Welcome to Visual Novel Engine", 100, 150);
+		game.batch.end();	
 	}
 
 	@Override
@@ -46,7 +64,6 @@ public class MainMenuScreen implements Screen
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 		
 	}
 
